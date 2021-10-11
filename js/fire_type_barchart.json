@@ -1,0 +1,59 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": "Causes of all fires",
+  "width": 800,
+  "height": 500,
+  "data": {
+    "url": "data/tas_fires.csv"
+  },
+  "transform": [
+    {"timeUnit": "year", "field": "INCD_START", "as": "start_year"},
+    {"timeUnit": "month", "field": "INCD_START", "as": "start_month"},
+    {"timeUnit": "utcyearmonthdate", "field": "INCD_START", "as": "start_date"},
+    {"timeUnit": "utcyearmonthdate", "field": "INCD_END", "as": "end_date"}
+  ],
+  "layer": [
+    {
+      "mark": "bar",
+      "encoding": {
+        "x": {
+          "field": "IGN_CAUSE1",
+          "type": "nominal",
+          "title": "Fire cause",
+          "axis": {"labelAngle":0}
+        },
+        "y": {
+          "field": "SHAPE_AREA",
+          "title": "Area burned",
+          "type": "quantitative",
+          "aggregate": "sum"
+        },
+        "color": {
+          "field": "IGN_CAUSE1",
+          "title": "Cause",
+          "type": "nominal",
+          "scale": {
+            "domain": [
+              "Planned Burn",
+              "Accidental",
+              "Deliberate",
+              "Natural",
+              "Undetermined"
+            ],
+            "range": [
+              "#a3cce9",
+              "#1170aa",
+              "#c85200",
+              "#a3acb9",
+              "#57606c"
+            ]
+          }
+        },    
+        "tooltip": [
+          {"field": "IGN_CAUSE1", "type": "nominal", "title": "Cause "},
+          {"field": "SHAPE_AREA", "type": "quantitative", "title": "Area Burned (m^2) ", "aggregate": "sum", "format": ".2f"}
+        ]
+      }
+    }
+  ]
+}
