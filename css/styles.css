@@ -48,3 +48,34 @@ p {
 	font-weight: bold;
 	font-size: 14pt;
 }
+
+.natural{
+	color:rgb(163, 172, 185) ;
+	font-weight: bolder;
+	font-size: 20pt;
+}
+
+.accidental{
+	color: rgb(17, 112, 170);
+	font-weight: bolder;
+	font-size: 20pt;
+}
+
+.undetermined{
+	color: rgb(87, 96, 108);
+	font-weight: bolder;
+	font-size: 20pt;
+}
+
+.deliberate{
+	color: rgb(200, 82, 0);
+	font-weight: bolder;
+	font-size: 20pt;
+}
+
+.planned{
+	color: rgb(163, 204, 233);
+	font-weight: bolder;
+	font-size: 20pt;
+}      
+              
