@@ -1,29 +1,99 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <title>Tasmanian Bushfires</title>
   <!-- Import Vega & Vega-Lite (does not have to be from CDN) -->
   <script src="https://cdn.jsdelivr.net/npm/vega@5.20.2"></script>
   <script src="https://cdn.jsdelivr.net/npm/vega-lite@5.1.0"></script>
   <script src="https://cdn.jsdelivr.net/npm/vega-embed@6.17.0"></script>
   
+  <!-- Import pure CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/purecss@2.0.3/build/pure-min.css" integrity="sha384-cg6SkqEOCV1NbJoCu11+bm0NvBRc8IYLRGXkmNrqUBfTjmMYwNKPWBTIKyw9mHNJ" crossorigin="anonymous">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Google fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Exo:wght@300&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Akronim&display=swap" rel="stylesheet">
+
   <!-- CSS file -->
   <link rel="stylesheet" type="text/css" href="css/styles.css" media="all">
 
 </head>
 <body>
+
+<!-- Start page -->
+<div class="page">
+
+  <!-- Start header -->
+  <div class="pure-g">
+    <!-- This header should span the full width of the screen -->
+    <div class="pure-u-2-5">
+      <h1>Tasmanian Bushfires</h1>
+      <p>
+        Tasmania is one of the most naturally diverse places in the world, teeming with native Australian and uniquely 
+        Tasmanian wildlife and flora. It hosts some of the cleanest air in the world and is one of the most popular 
+        tourist destinations in Australia for its beautiful national parks. Being a state dense with national parks and 
+        bsuh, Tasmania is a state very susceptible to bushfires. This endangers many native species each year and can wipe
+        out entire tourist destinations, which significantly impacts Tasmania's economy with tourism increasingly making
+        the backbone of Tasmania's ecomomy.
+      </p>
+    </div>
+    <div class="pure-u-3-5">
+      <div id="line_chart" class="vis-container"></div>
+    </div>
+  </div>
+  <!-- End header -->
+
+  <!-- This section should contain the first two visualisations -->
+  <div class="pure-g">
+    <div class="pure-u-1-3">
+      <div class="chart1_description">
+        <h2>Causes of bushires</h2>
+        <p>What are the different causes of bushfires around the state. nsj wehfn hse rhsgushe fjuih f iu</p>
+      </div>
+    </div>
+    <div class="pure-u-2-3">
+      <div id="bar_chart" class="vis-container"></div>
+    </div>
+  </div>
+
+  <!-- End section 1 -->
+  <div class="pure-g">
+    <div class="pure-u-5-5">
+      <div class="map_descriptiown">
+        <h2>TAS MAP</h2>
+        <p>What are the different causes of bushfires around the state. nsj wehfn hse rhsgushe fjuih f iu</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- This section should contain the first two visualisations -->
+  <div class="pure-g">
+    <div class="pure-u-5-5">
+      <div id="tas_map" class="vis-container"></div>
+    </div>
+  </div>
+  <!-- End section 1 -->
+
   
-<div id="bar_chart"></div>
+</div>
+<!-- end pure grid group -->
 
-<div id="line_chart"></div>
-
+<!-- Link to the JSON file of each Vega-Lite visualisation -->
 <script type="text/javascript">
 
-  var chart1 = "js/fire_type_barchart.json";
+ var chart1 = "js/fire_type_barchart.json";
   vegaEmbed('#bar_chart', chart1).then(function(result) {
     // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
   }).catch(console.error);
+  var tas_map = "js/fire_map.json";
+  vegaEmbed('#tas_map', tas_map).then(function(result) {
+    // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+  }).catch(console.error);
 
-  var chart2 = "js/chart1b.vg.json";
+  var chart2 = "js/fire_time_barchart.json";
   vegaEmbed('#line_chart', chart2).then(function(result) {
     // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
   }).catch(console.error);

@@ -1,8 +1,50 @@
-#detailed_map {
-	top:100px;
-	bottom: 100px; 
-	left: 100px;
-	right: 100px;
-	/*height: 1000px;
-	width: 800px;*/
+body {
+    background-color: gray;
+}
+
+.page {
+    width: 1500px;
+    background-color: whitesmoke;
+    margin: auto;
+    padding: 50px;
+    padding-top: 0px;
+}
+
+.vis-container {
+    width: 100%;
+	padding: 50pt;
+}
+
+.vega-bind {
+	padding: 10pt;
+	font-family: 'Exo', sans-serif;
+	font-size: 15pt;
+	text-align: center;
+}
+
+.pure-g {
+    margin-bottom: 25px;
+	margin-right: 25px;
+	margin-left: 25px;
+}
+
+h1 {
+	color: "darkgrey";
+	font-family: 'Akronim', cursive;
+	text-align: left;
+	font-weight: 550;
+	font-size: 80pt;
+}
+
+h2 {
+	font-family: 'Exo', sans-serif;
+	text-align: left;
+	font-weight: bolder;
+	font-size: 30pt;
+}
+
+p {
+	font-family: 'Exo', sans-serif;
+	font-weight: bold;
+	font-size: 14pt;
 }
