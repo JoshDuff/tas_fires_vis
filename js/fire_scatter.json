@@ -1,7 +1,6 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "title": "Area burned each year since 1980",
-  "width": "container",
+  "width": 950,
   "height": 500,
   "data": {
     "url": "data/tas_fires.csv"
@@ -9,7 +8,7 @@
   "params": [
     {
       "name": "min_area", "value": 0,
-      "bind":{"input": "range","min": 0,"max": 500,"step": 10, "name": "Minimum Area of Fires to Count (km^2): "}
+      "bind":{"input": "range", "min": 0,"max": 20,"step": 0.1, "name": "Minimum Area of Fires to Count (km^2): "}
     },
     {
       "name": "month_select",
@@ -47,12 +46,21 @@
         ],
         "name": "Select Month: "
       }
+    },
+    {
+      "name": "cause_brush",
+      "select": {"type": "point", "fields": ["IGN_CAUSE1"]},
+      "bind": "legend"
+    },
+    {
+      "name": "size_brush",
+      "select": {"type": "point", "fields": ["area_km"]},
+      "bind": "legend"
     }
   ],
   "transform": [
     {"calculate": "substring(datum.INCD_START, 1, 5)", "as": "start_year"},
     {"calculate": "substring(datum.INCD_START, 6, 8)", "as": "start_month"},
-    {"calculate": "substring(datum.INCD_START, 1, 11)", "as": "start_date"},
     {"calculate": "substring(datum.INCD_END, 1, 11)", "as": "end_date"},
     {"calculate": "datum.SHAPE_AREA / 1000000", "as": "area_km"},
     {"filter": "datum.area_km > min_area"},
@@ -67,21 +75,61 @@
       "scale": {"type":"band", "domain": [1980, 2020]}
     },
     "y": {
-      "field": "area_km",
-      "type": "quantitative",
+      "timeUnit": "dayofyear",
+      "field": "INCD_START2",
+      "type": "temporal",
       "axis": {"tickCount": 10},
-      "aggregate": "sum",
-      "title": "Burned Area (Square km)"
+      "title": "Day of year"
     }, 
-    "size": {"value": 10},
-    "color": {"value": "#c85200"},
+    "color": {
+      "field": "IGN_CAUSE1",
+      "legend": {"title": "Cause"},
+      "type": "nominal",
+      "scale": {
+        "domain": [
+          "Natural",
+          "Accidental",
+          "Undetermined",
+          "Deliberate",
+          "Planned Burn"
+        ],
+        "range": [
+          "#Ae9c45",
+          "#1170aa",
+          "#57606c",
+          "#c85200", 
+          "#6073B1"
+        ]
+      }
+    },
+    "opacity": {
+      "value": 0.1,
+      "condition": {"selection": "cause_brush", "value": 0.7}
+    }, 
     "tooltip": [
-      {"field": "start_year", "type": "quantitative", "title": "Year Ignited", "aggregate": "max"},
-      {"field": "area_km", "type": "quantitative", "title": "Area Burned (km^2) ", "aggregate": "sum", "format": ".2f"}
+      {"field": "FIRE_NAME", "type": "nominal", "title": "Fire name"},
+      {"timeUnit": "yearmonthdate", "field": "INCD_START2", "type": "temporal", "title": "Date Ignited"},
+      {"timeUnit": "yearmonthdate", "field": "INCD_END2", "type": "temporal", "title": "Date Extinguished"},
+      {"field": "start_year", "type": "quantitative", "title": "Year Ignited"},
+      {"field": "area_km", "type": "quantitative", "title": "Area Burned (km^2) ", "format": ".2f"}
     ]
   },
   "layer": [
-    {"mark": "line"}
+    {
+      "mark": {"type": "circle", "stroke": "darkgrey", "strokeWidth": 0.1},
+      "encoding": {
+        "size": {
+          "field": "area_km",
+          "legend": {"title": "Burned Area (km^2)"},
+          "type": "quantitative",
+          "scale": {
+            "type": "threshold",
+            "domain": [1, 100, 500],
+            "range": [50, 200, 1000, 2000]
+          }
+        }
+      }
+    }
   ],
   "config": {
     "title": {
@@ -99,17 +147,15 @@
       "titleFontSize": 20
     },
     "legend": {
-      "labelFontSize": 16,
+      "labelFontSize": 18,
       "titleFontSize": 20,
       "titlePadding": 20,
-      "orient": "top",
-      "columnPadding": 60,
+      "orient": "right",
+      "columnPadding": 40,
+      "rowPadding": 10,
       "symbolSize": 300,
-      "padding": 10
-    },
-    "bar": {
-      "stroke": "lightslategray",
-      "strokeWidth": 0.5
+      "padding": 10,
+      "gridAlign":"each"
     },
     "font":"Noto Sans Display"
   }

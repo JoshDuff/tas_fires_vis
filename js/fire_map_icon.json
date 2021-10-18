@@ -1,0 +1,78 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "width": 300,  
+  "height": 300,
+  "projection": {
+    "parallels": [-16, -37],
+    "rotate": [-145, 0, 0],
+    "type": "conicEqualArea"
+  },
+  "layer": [
+    {
+      "data": {
+        "url": "data/tas_map_boundaries.topojson",
+        "format": {"type": "topojson", "feature": "tas_map_boundaries"}
+      },
+      "mark": {
+        "type": "geoshape", 
+        "stroke": "grey"
+      },
+      "encoding": {
+        "color": {
+          "value": "lightgray"
+        },
+        "tooltip": [
+          {"field": "properties.NAME", "type": "nominal", "title": "Region"}
+        ]
+      }
+    },
+    {
+      "data": {
+        "url": "data/tas_fires.topojson",
+        "format": {"type": "topojson", "feature": "tas_fires"}
+      },
+      "mark": {
+        "type": "geoshape", 
+        "tooltip":{"content": "data"},
+        "stroke": "grey",
+        "strokeWidth": 0.2
+      },
+      "encoding": {
+        "color": {
+          "value": "#c85200"
+        },
+        "tooltip": null
+      }
+    }
+  ],
+  "config": {
+    "title": {
+      "fontSize": 30
+    },
+    "view": {
+      "stroke":"transparent"
+    },
+    "background":"whitesmoke",
+    "axis": {
+      "gridColor": "lightslategray",
+      "gridOpacity": 0.2,
+      "labelFontSize": 14,
+      "titleFontSize": 20,
+      "labelOverlap": "greedy"
+    },
+    "legend": {
+      "labelFontSize": 16,
+      "symbolSize": 300,
+      "labelPadding": 10,
+      "titleFontSize": 20,
+      "titlePadding": 20,
+      "orient": "top",
+      "columnPadding": 60,
+      "padding": 10
+    },
+    "bar": {
+      "strokeWidth": 10
+    },
+    "font":"Noto Sans Display"
+  }
+}

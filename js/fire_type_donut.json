@@ -1,0 +1,129 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "width": 200,
+  "height": 500,
+  "data": {
+    "url": "data/tas_fires.csv"
+  },
+  "transform": [
+    {"calculate": "datum.SHAPE_AREA / 1000000", "as": "area_km"}
+  ],
+  "encoding": {
+    "theta": {
+      "field": "area_km",
+      "type": "quantitative",
+      "aggregate": "sum",
+      "stack": true
+    }, 
+    "color": {
+      "field": "IGN_CAUSE1",
+      "type": "nominal",
+      "legend": null,
+      "sort": {
+        "op": "sum",
+        "field": "SHAPE_AREA",
+        "order": "descending"
+      },
+      "scale": {
+        "domain": [
+          "Natural",
+          "Accidental",
+          "Undetermined",
+          "Deliberate",
+          "Planned Burn"
+        ],
+        "range": [
+          "#Ae9c45",
+          "#1170aa",
+          "#57606c",
+          "#c85200", 
+          "#6073B1"
+        ]
+      }
+    },
+    "tooltip": [
+      {"field": "IGN_CAUSE1", "type": "nominal", "title": "Cause"},
+      {"field": "area_km", "type": "quantitative", "title": "Area Burned (km^2)", "aggregate": "sum", "format": ".0f"}
+    ]
+  },
+  "layer":[
+    {
+      "mark": {
+        "type": "arc", 
+        "outerRadius": 150,
+        "radius2": 70,
+        "cornerRadius": 10,
+        "padAngle": 0.05,
+        "thetaOffset": 0
+      }
+    },
+    {
+      "mark": {"type": "text", "outerRadius": 210, "align": "center", "yOffset": -25, "xOffset": -20},
+      "transform": [{"calculate": "datum.area_km", "as": "wedge_ann"}],
+      "encoding": {
+        "text": {
+          "field": "wedge_ann", 
+          "type": "quantitative",
+          "aggregate": "sum",
+          "format": ".0f"
+        },
+        "size":{"value": 16}
+      }
+    },
+    {
+      "mark": {"type": "text", "outerRadius": 210, "align": "center", "yOffset": -25, "xOffset": 20},
+      "transform": [{"calculate": "datum.AREA_PERC", "as": "wedge_perc"}],
+      "encoding": {
+        "text": {
+          "field": "wedge_perc", 
+          "aggregate": "sum",
+          "type": "quantitative",
+          "format": ".0f"
+        },
+        "size":{"value": 16}
+      }
+    },
+    {
+      "mark": {"type": "text", "outerRadius": 210, "align": "center", "yOffset": -25, "xOffset": 27},
+      "encoding": {
+        "text": {
+          "value": "(     )%"
+        },
+        "size":{"value": 16}
+      }
+    },
+    {
+      "mark": {"type": "text", "outerRadius": 210, "yOffset": 25},
+      "encoding": {
+        "text": {
+          "field": "IGN_CAUSE1", 
+          "type": "nominal"
+        },
+        "size":{"value": 16}
+      }
+    },
+    {
+      "mark": {"type": "text", "outerRadius": 210},
+      "encoding": {
+        "text": {
+          "value": "square km are"
+        },
+        "size":{"value": 16}
+      }
+    }
+  ],
+  "config": {
+    "title": {
+      "fontSize": 30
+    },
+    "view": {
+      "stroke":"transparent"
+    },
+    "background":"whitesmoke",
+    "font":"Noto Sans Display",
+    "arc": {
+      "stroke": "white",
+      "strokeWidth": 0
+    }
+  }
+}

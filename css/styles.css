@@ -2,80 +2,74 @@ body {
     background-color: gray;
 }
 
+.title {
+	color:rgb(200, 82, 0);
+}
+
 .page {
-    width: 1500px;
+    width: 1200px;
     background-color: whitesmoke;
     margin: auto;
-    padding: 50px;
+    padding: 100px;
     padding-top: 0px;
 }
 
 .vis-container {
-    width: 100%;
-	padding: 50pt;
+	margin-bottom: 25px;
 }
 
 .vega-bind {
 	padding: 10pt;
-	font-family: 'Exo', sans-serif;
+	font-family: 'Noto Sans Display', sans-serif;
 	font-size: 15pt;
 	text-align: center;
 }
 
-.pure-g {
-    margin-bottom: 25px;
-	margin-right: 25px;
-	margin-left: 25px;
-}
-
 h1 {
-	color: "darkgrey";
+	color:rgb(200, 82, 0);
 	font-family: 'Akronim', cursive;
 	text-align: left;
 	font-weight: 550;
-	font-size: 80pt;
+	font-size: 65pt;
 }
 
 h2 {
-	font-family: 'Exo', sans-serif;
+	font-family: 'Noto Sans Display', sans-serif;
 	text-align: left;
 	font-weight: bolder;
-	font-size: 30pt;
+	font-size: 20pt;
+	margin: 5px;
+	margin-left:0px;
 }
 
-p {
-	font-family: 'Exo', sans-serif;
-	font-weight: bold;
-	font-size: 14pt;
+p, ul, li {
+	font-family: 'Noto Sans Display', sans-serif;
+	font-weight: normal;
+	font-size: 12pt;
 }
 
 .natural{
-	color:rgb(163, 172, 185) ;
-	font-weight: bolder;
-	font-size: 20pt;
+	color:rgb(174, 156, 69) ;
+	font-weight: bold;
 }
 
 .accidental{
 	color: rgb(17, 112, 170);
-	font-weight: bolder;
-	font-size: 20pt;
+	font-weight: bold;
 }
 
 .undetermined{
 	color: rgb(87, 96, 108);
-	font-weight: bolder;
-	font-size: 20pt;
+	font-weight: bold;
 }
 
 .deliberate{
 	color: rgb(200, 82, 0);
-	font-weight: bolder;
-	font-size: 20pt;
+	font-weight: bold;
 }
 
 .planned{
-	color: rgb(163, 204, 233);
-	font-weight: bolder;
-	font-size: 20pt;
+	color: rgb(96, 115, 177);
+	font-weight: bold;
 }      
               

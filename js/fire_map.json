@@ -1,6 +1,5 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "title": "Detailed map of bushfires",
   "params": [
     {
       "name": "min_area", "value": 1,
@@ -47,7 +46,7 @@
   "hconcat": [
     {
       "width": 500,  
-      "height": 700,
+      "height": 500,
       "projection": {
         "parallels": [-16, -37],
         "rotate": [-145, 0, 0],
@@ -114,11 +113,11 @@
                   "Planned Burn"
                 ],
                 "range": [
-                  "#a3acb9",
+                  "#Ae9c45",
                   "#1170aa",
                   "#57606c",
                   "#c85200", 
-                  "#a3cce9"
+                  "#6073B1"
                 ]
               }
             },    
@@ -138,8 +137,8 @@
       ]
     },
     {
-      "width": 700,  
-      "height": 700,
+      "width": 500,  
+      "height": 500,
       "data": {
         "url": "data/tas_fires.csv"
       },
@@ -215,6 +214,7 @@
           "aggregate": "sum",
           "title": "Burned Area (Square km)"
         },
+        "size": {"value": 10},
         "color": {
           "field": "IGN_CAUSE1",
           "title": "",
@@ -229,11 +229,11 @@
               
             ],
             "range": [
-              "#a3acb9",
+              "#Ae9c45",
               "#1170aa",
               "#57606c",
               "#c85200", 
-              "#a3cce9"
+              "#6073B1"
             ]
           }
         },  
@@ -273,6 +273,6 @@
     "bar": {
       "strokeWidth": 10
     },
-    "font": "exo"
+    "font":"Noto Sans Display"
   }
 }
