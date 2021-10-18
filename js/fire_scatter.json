@@ -78,7 +78,7 @@
       "timeUnit": "dayofyear",
       "field": "INCD_START2",
       "type": "temporal",
-      "axis": {"tickCount": 10},
+      "axis": {"tickCount": 12},
       "title": "Day of year"
     }, 
     "color": {

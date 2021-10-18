@@ -32,11 +32,12 @@
   <!-- Start header -->
   <div class="pure-g">
     <!-- This header should span the full width of the screen -->
-    <div class="pure-u-3-5" style="height:350px">
-      <h1 style="margin-top: 170px;">Tasmanian Bushfires</h1>
+    <div class="pure-u-4-24" style="height:150px; margin-left: -40px;">
+      <img src="data/tas_fires_icon.png" style = "margin-left: 20px; margin-top: 25px;">
     </div>
-    <div class="pure-u-2-5" style="height:350px">
-      <div id="map_icon" class="vis-container" style = "margin-left: 20px; margin-top: 25px;"></div>
+    <div class="pure-u-16-24" style="height:250px">
+      <h1 style="margin-top: 60px;">Tasmanian Bushfires</h1>
+      <h3 style="margin-top: -75px; margin-left: 10px;">By Josh Duff</h3>
     </div>
   </div>
   <!-- End header -->
@@ -51,7 +52,7 @@
         Tasmanian wildlife and flora. It hosts some of the cleanest air in the world and is one of the most popular 
         tourist destinations in Australia for its beautiful national parks. Being a state dense with national parks and 
         bush, Tasmania is a state very susceptible to bushfires. This endangers many native species each year and can wipe
-        out entire tourist destinations, which significantly impacts Tasmania's economy with tourism increasingly making
+        out entire tourist destinations, which significantly impacts Tasmania with tourism increasingly making
         the backbone of Tasmania's ecomomy.
       </p>
     </div>
@@ -88,10 +89,44 @@
       </div>
     </div>
     <div class="pure-u-3-5">
-      <div id="donut" class="vis-container" style = "margin-left: 120px"></div>
+      <div id="donut" class="vis-container" style = "margin-left: 190px"></div>
     </div>
   </div>
 
+  <div class="pure-g">
+    <div class="pure-u-5-5">
+      <h2>Interactive Bushfire Record</h2>
+    </div>
+  </div>
+  <div class="pure-g">
+  <div class="pure-g">
+    <div class="pure-u-2-5">
+      <p>
+        Several trends can be spotted by looking at the spread of Tasmania's bushfires over the years. 
+        It is obvious from the chart below that the frequency of bushfires has been steadily increasing
+        over the last 40 years. 
+      </p>
+      <p>
+        Selecting the <span class="planned">planned burns</span> below, shows how
+        Tasmania has become much more vigilent about controlling the dry fuel avaliable for burning. These 
+        planned burns are staged in the winter months and end of the bushfire season when the fires are most
+        easily controlled.
+      </p>
+    </div>
+    <div class="pure-u-12-24" style="margin-left: 100px;">
+      <p>
+        <span class="deliberate">Deliberate arson</span> has always been sadly common in Tasmania, with many more
+        small arson fires being recorded in recent years. 
+      </p>
+      <p>
+        <ul>
+          <li>Use the slider to only fires over a certain size</li>
+          <li>Use the drop-down menu to select a month to follow</li>
+          <li>Click one or multiple legend entried to focus on certain causes</li>
+        </ul>
+      </p>
+    </div>
+  </div>
     <!-- Start bubble -->
     <div class="pure-g">
       <div class="pure-u-5-5">
@@ -108,12 +143,22 @@
   </div>
   <div class="pure-g">
     <div class="pure-u-2-5">
+      <p>
+        The largest fires are generally the <span class="natural">natural</span> fires caused by lightening strikes.
+        As seen in the map below, these fires normally occur in sparsely-inhabbited west and south-west regions. These
+        are started generally by lightneing strikes and can becomes devestatingly big due to the difficulty in accessing
+        these fires deep in bushland to be able to extinguish them. 
+      </p>
+      <p>
+        Most <span class="accidental">accidental</span> fires can be seen on the east-coast, where many popular camping spots can
+        be found. This indicates people leaving campfires unattended or letting bonfires go out of control. 
+      </p>
+    </div>
+    <div class="pure-u-12-24" style="margin-left: 100px;">
       <p>Use the map of Tasmania shown below, the scatter plot above and the stacked bar chart to the right 
         to explore the different bushfires recorded since 1980. You can investigate specific fires, the worst 
         bushfire seasons in the state's history or witness how planned control fires reduced bushfires in different areas. 
       </p>
-    </div>
-    <div class="pure-u-12-24" style="margin-left: 100px;">
       <p>
         <ul>
           <li>Use the slider to only fires over a certain size</li>
@@ -136,11 +181,6 @@
 
 <!-- Link to the JSON file of each Vega-Lite visualisation -->
 <script type="text/javascript">
-
-var icon = "js/fire_map_icon.json";
-vegaEmbed('#map_icon', icon).then(function(result) {
-  // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
-}).catch(console.error);
 
 var timeline = "js/fire_timeline.json";
 vegaEmbed('#timeline', timeline).then(function(result) {

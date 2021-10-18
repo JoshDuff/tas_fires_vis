@@ -1,7 +1,7 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "width": 300,  
-  "height": 300,
+  "width": 150,  
+  "height": 150,
   "projection": {
     "parallels": [-16, -37],
     "rotate": [-145, 0, 0],
@@ -21,9 +21,7 @@
         "color": {
           "value": "lightgray"
         },
-        "tooltip": [
-          {"field": "properties.NAME", "type": "nominal", "title": "Region"}
-        ]
+        "tooltip": null
       }
     },
     {

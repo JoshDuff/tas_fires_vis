@@ -46,7 +46,7 @@
   "hconcat": [
     {
       "width": 500,  
-      "height": 500,
+      "height": 400,
       "projection": {
         "parallels": [-16, -37],
         "rotate": [-145, 0, 0],
@@ -138,7 +138,7 @@
     },
     {
       "width": 500,  
-      "height": 500,
+      "height": 400,
       "data": {
         "url": "data/tas_fires.csv"
       },
